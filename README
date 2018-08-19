@@ -52,3 +52,14 @@ Run using command:
 python lr.py --basis normal --alpha 0.0001 --lambda 8500
 
 ================================================================================================
+
+Question 5:
+For this part, you have free reign. You can implement any enhancements to the regularized linear
+regression model that you think your model could benefit from. Please describe your innovations
+within the file.
+
+learning_rate = 0.001
+lambda_regularizer = 105000
+p-norm 6
+Run using command:
+python lr.py --lambda 105000 --alpha 0.001 --basis sigmoid --p-norm 6
