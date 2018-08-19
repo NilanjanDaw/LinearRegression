@@ -3,7 +3,7 @@
 # @Email:  nilanjandaw@gmail.com
 # @Filename: lr.py
 # @Last modified by:   nilanjan
-# @Last modified time: 2018-08-19T02:31:07+05:30
+# @Last modified time: 2018-08-19T17:21:45+05:30
 # @copyright: Nilanjan Daw
 
 
@@ -28,85 +28,21 @@ def normalisation(data):
 
 
 def plot(data):
-    fig = plt.figure()
-    plt.subplot(2, 2, 1)
-    plt.plot(data["post_day"], data["page_likes"], 'bo',
-             markersize=2, alpha=0.6, label="post_day")
-    plt.legend()
-    plt.subplot(2, 2, 2)
-    plt.plot(data["daily_crowd"], data["page_likes"], 'ro',
-             markersize=2, alpha=0.6, label="daily_crowd")
-    plt.legend()
-    plt.subplot(2, 2, 3)
-    plt.plot(data["share_count"], data["page_likes"], 'go',
-             markersize=2, alpha=0.6, label="share_count")
-    plt.legend()
-    plt.subplot(2, 2, 4)
-    plt.plot(data["page_checkin"], data["page_likes"], 'yo',
-             markersize=2, alpha=0.6, label="page_checkin")
-    plt.legend()
-    # plt.plot(data["page_likes"], data["promotion"], 'mo', markersize=2, alpha=0.6, label="page_likes")
 
-    # plt.show()
+    plt.plot(data["F1"], data["target"], 'mo', markersize=2, alpha=0.6, label="F1")
 
-    fig = plt.figure()
-    plt.subplot(2, 4, 1)
-    plt.plot(data["F1"], data["page_likes"], 'bo',
-             markersize=2, alpha=0.6, label="F1")
-    plt.legend()
-    plt.subplot(2, 4, 2)
-    plt.plot(data["F2"], data["page_likes"], 'ro',
-             markersize=2, alpha=0.6, label="F2")
-    plt.legend()
-    plt.subplot(2, 4, 3)
-    plt.plot(data["F3"], data["page_likes"], 'go',
-             markersize=2, alpha=0.6, label="F3")
-    plt.legend()
-    plt.subplot(2, 4, 4)
-    plt.plot(data["F4"], data["page_likes"], 'yo',
-             markersize=2, alpha=0.6, label="F4")
-    plt.legend()
+    plt.ylabel('target', fontsize=18)
+    plt.xlabel('F1', fontsize=16)
+    plt.show()
 
-    plt.subplot(2, 4, 5)
-    plt.plot(data["F5"], data["page_likes"], 'bo',
-             markersize=2, alpha=0.6, label="F5")
-    plt.legend()
-    plt.subplot(2, 4, 6)
-    plt.plot(data["F6"], data["page_likes"], 'ro',
-             markersize=2, alpha=0.6, label="F6")
-    plt.legend()
-    plt.subplot(2, 4, 7)
-    plt.plot(data["F7"], data["page_likes"], 'go',
-             markersize=2, alpha=0.6, label="F7")
-    plt.legend()
-    plt.subplot(2, 4, 8)
-    plt.plot(data["F8"], data["page_likes"], 'yo',
-             markersize=2, alpha=0.6, label="F8")
-    plt.legend()
-    # plt.plot(data["page_likes"], data["promotion"], 'mo', markersize=2, alpha=0.6, label="page_likes")
-    fig = plt.figure()
-    plt.subplot(2, 4, 1)
-    plt.plot(data["c1"], data["page_likes"], 'bo',
-             markersize=2, alpha=0.6, label="c1")
-    plt.legend()
-    plt.subplot(2, 4, 2)
-    plt.plot(data["c2"], data["page_likes"], 'ro',
-             markersize=2, alpha=0.6, label="c2")
-    plt.legend()
-    plt.subplot(2, 4, 3)
-    plt.plot(data["c3"], data["page_likes"], 'go',
-             markersize=2, alpha=0.6, label="c3")
-    plt.legend()
-    plt.subplot(2, 4, 4)
-    plt.plot(data["c4"], data["page_likes"], 'yo',
-             markersize=2, alpha=0.6, label="c4")
-    plt.legend()
+    plt.plot(data["F6"], data["target"], 'mo', markersize=2, alpha=0.6, label="F6")
+    plt.ylabel('target', fontsize=18)
+    plt.xlabel('F6', fontsize=16)
+    plt.show()
 
-    plt.subplot(2, 4, 5)
-    plt.plot(data["c5"], data["page_likes"], 'bo',
-             markersize=2, alpha=0.6, label="c5")
-    plt.legend()
-
+    plt.plot(data["base_time"], data["target"], 'mo', markersize=2, alpha=0.6, label="base_time")
+    plt.ylabel('target', fontsize=18)
+    plt.xlabel('base_time', fontsize=16)
     plt.show()
 
 
@@ -117,6 +53,8 @@ def read_data(file_path, basis=None):
                                                            "F7", "F8", "c1", "c2", "c3", "c4", "c5", "base_time",
                                                            "post_length", "share_count", "promotion",
                                                            "h_target", "post_day", "basetime_day", "target"])
+
+        # plot(data)
 
         y_train = data.loc[:, "target"]
         basetime_day = pd.get_dummies(data["basetime_day"], prefix='basetime_day')
@@ -319,6 +257,9 @@ def main():
     else:
         weight = p_norm_gradient_descent(x_train, y_train, x_validate, y_validate,
                                          iterations, learning_rate, p)
+
+    print("weight:")
+    print(weight)
 
     x_test = read_data_test('test.csv', basis=args.basis)
     test_data = test(x_test, weight)

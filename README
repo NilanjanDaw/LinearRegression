@@ -1,3 +1,54 @@
-iterations = 70
+Question 1:
+mean squared error on the test samples using all the features with L2 norm
+
 learning_rate = 0.0001
-lambda_regularizer = 0.1
+lambda_regularizer = 5000
+Run using command:
+python lr.py --alpha 0.0001 --lambda 5000
+
+
+Report the mean squared error on the test samples when the predictor is unregularized
+
+learning_rate = 0.01
+lambda_regularizer = 0
+Run using command:
+python lr.py --lambda 0 --alpha 0.01
+
+===============================================================================================
+
+Question 3:
+Modify your implementation to allow for a p-norm regularizer where p can take any one of the
+three values [2, 4, 6].
+Report mean squared errors on the test samples when p = 4 and p = 6.
+
+norm p = 4
+learning_rate = 0.0001
+lambda_regularizer = 80000
+Run using command:
+python lr.py --alpha 0.0001 --lambda 80000 --p-norm 4
+
+norm p = 6
+learning_rate = 0.0001
+lambda_regularizer = 80000
+Run using command:
+python lr.py --alpha 0.0001 --lambda 80000 --p-norm 6
+
+===============================================================================================
+
+Question 4:
+Implement two different basis functions that will be applied to your input features with the L2-
+regularized model.
+
+basis function 1:
+learning_rate = 0.0003
+lambda_regularizer = 750
+Run using command:
+python lr.py --alpha 0.0003 --lambda 750 --basis sigmoid
+
+basis function 2:
+learning_rate = 0.0001
+lambda_regularizer = 8500
+Run using command:
+python lr.py --basis normal --alpha 0.0001 --lambda 8500
+
+================================================================================================

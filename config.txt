@@ -3,7 +3,7 @@
 @Email:  nilanjandaw@gmail.com
 @Filename: config.txt
 @Last modified by:   nilanjan
-@Last modified time: 2018-08-19T02:06:13+05:30
+@Last modified time: 2018-08-19T16:20:15+05:30
 @Copyright: Nilanjan Daw
 
 
@@ -44,6 +44,11 @@ lambda_regularizer = 5000
 
 550.6311135488942 513.222726924283 32.76568
 
+learning_rate = 0.0001
+lambda_regularizer = 4000
+
+1022.1396753663302	| Validation_MSE 1094.723070830128 | 32.78001
+
 
 p norm 4
 learning_rate = 0.0001
@@ -66,3 +71,9 @@ iterations = 500000
 learning_rate = 0.0001
 lambda_regularizer = 8500
 Train_MSE 1036.3627195117153	| Validation_MSE 1093.4931503223745 | 32.66965
+
+sigmoid + p-norm 6
+iterations = 500000
+learning_rate = 0.001
+lambda_regularizer = 8000
+Train_MSE 1040.709294258668	| Validation_MSE 1091.3336298449424
