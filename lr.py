@@ -3,7 +3,7 @@
 # @Email:  nilanjandaw@gmail.com
 # @Filename: lr.py
 # @Last modified by:   nilanjan
-# @Last modified time: 2018-08-19T17:21:45+05:30
+# @Last modified time: 2018-08-19T20:03:52+05:30
 # @copyright: Nilanjan Daw
 
 
@@ -237,13 +237,15 @@ def main():
                         choices=['sigmoid', 'normal'])
     parser.add_argument('--lambda', dest='lambda_rate', type=float)
     parser.add_argument('--alpha', dest='learning_rate', type=float)
+    parser.add_argument('--train', dest='train', type=str)
+    parser.add_argument('--test', dest='test', type=str)
     args = parser.parse_args()
 
     learning_rate = args.learning_rate
     lambda_regularizer = args.lambda_rate
     p = args.p
 
-    x_train, y_train = read_data("train.csv", basis=args.basis)
+    x_train, y_train = read_data(args.train, basis=args.basis)
     x_validate = x_train[25600:, :]
     x_train = x_train[:25600, :]
 
@@ -261,7 +263,7 @@ def main():
     print("weight:")
     print(weight)
 
-    x_test = read_data_test('test.csv', basis=args.basis)
+    x_test = read_data_test(args.test, basis=args.basis)
     test_data = test(x_test, weight)
 
     i = 0

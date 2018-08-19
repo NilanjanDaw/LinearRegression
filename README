@@ -1,10 +1,23 @@
+
+Global Configuration:
+Standardisation - Min-Max
+Maximum number of iterations: 500000
+
+CommandLine Arguments:
+--alpha: learning rate
+--lambda: regularization factor
+--p-norm: p-norm to use (4, 6 etc)
+--basis: basis function to use (options: sigmoid or normal)
+--train: path to training dataset file (relative or absolute)
+--test: path to test dataset file (relative or absolute)
+===============================================================================================
 Question 1:
 mean squared error on the test samples using all the features with L2 norm
 
 learning_rate = 0.0001
 lambda_regularizer = 5000
 Run using command:
-python lr.py --alpha 0.0001 --lambda 5000
+python lr.py --alpha 0.0001 --lambda 5000 --train train.csv --test test.csv
 
 
 Report the mean squared error on the test samples when the predictor is unregularized
@@ -12,7 +25,7 @@ Report the mean squared error on the test samples when the predictor is unregula
 learning_rate = 0.01
 lambda_regularizer = 0
 Run using command:
-python lr.py --lambda 0 --alpha 0.01
+python lr.py --lambda 0 --alpha 0.01 --train train.csv --test test.csv
 
 ===============================================================================================
 
@@ -25,13 +38,13 @@ norm p = 4
 learning_rate = 0.0001
 lambda_regularizer = 80000
 Run using command:
-python lr.py --alpha 0.0001 --lambda 80000 --p-norm 4
+python lr.py --alpha 0.0001 --lambda 80000 --p-norm 4 --train train.csv --test test.csv
 
 norm p = 6
 learning_rate = 0.0001
 lambda_regularizer = 80000
 Run using command:
-python lr.py --alpha 0.0001 --lambda 80000 --p-norm 6
+python lr.py --alpha 0.0001 --lambda 80000 --p-norm 6 --train train.csv --test test.csv
 
 ===============================================================================================
 
@@ -43,13 +56,13 @@ basis function 1:
 learning_rate = 0.0003
 lambda_regularizer = 750
 Run using command:
-python lr.py --alpha 0.0003 --lambda 750 --basis sigmoid
+python lr.py --alpha 0.0003 --lambda 750 --basis sigmoid --train train.csv --test test.csv
 
 basis function 2:
 learning_rate = 0.0001
 lambda_regularizer = 8500
 Run using command:
-python lr.py --basis normal --alpha 0.0001 --lambda 8500
+python lr.py --basis normal --alpha 0.0001 --lambda 8500 --train train.csv --test test.csv
 
 ================================================================================================
 
@@ -62,4 +75,4 @@ learning_rate = 0.001
 lambda_regularizer = 105000
 p-norm 6
 Run using command:
-python lr.py --lambda 105000 --alpha 0.001 --basis sigmoid --p-norm 6
+python lr.py --lambda 105000 --alpha 0.001 --basis sigmoid --p-norm 6 --train train.csv --test test.csv
